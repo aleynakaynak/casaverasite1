@@ -31,3 +31,37 @@ body{font-size:17px}
   .hero-pin.sold.unnumbered{min-width:54px;padding:5px 7px}
   .hero-pin.sold.unnumbered b{display:block;font-size:8px}
 }
+
+/* Hero görseli her ekranda kaydırmadan tek ekrana sığsın.
+   Genişlik hem kutuya hem de başlığın altında kalan ekran yüksekliğine göre
+   sınırlanır; oran (1672/941) korunduğu için villa numaraları hizalı kalır. */
+.hero{--hdr:82px}
+.hero-image{width:min(100%,calc((100vh - var(--hdr)) * 1672 / 941));width:min(100%,calc((100svh - var(--hdr)) * 1672 / 941));margin-inline:auto}
+@media(max-width:760px){
+  .hero{--hdr:68px}
+}
+
+/* Villa işaretleri hero görselinin genişliğiyle orantılı ölçeklenir; böylece dar
+   masaüstü, tablet ve yatay telefon ekranlarında üst üste binmiyorlar.
+   --u, 1440px hero genişliğinde 30px'e denk gelir (mevcut masaüstü ölçüsü). */
+@media(min-width:761px){
+  .hero-image{container-type:inline-size}
+  .hero-hotspots{--u:clamp(14px,2.08cqw,30px)}
+  .hero-pin{min-width:var(--u);height:var(--u);padding:0 calc(var(--u)*.133);font-size:calc(var(--u)*.433);border-width:calc(var(--u)*.05)}
+  .hero-pin span{font-size:calc(var(--u)*.367);padding:calc(var(--u)*.167) calc(var(--u)*.3);bottom:calc(100% + var(--u)*.3)}
+  .hero-pin.sold{min-width:calc(var(--u)*1.6);min-height:var(--u);padding:calc(var(--u)*.167) calc(var(--u)*.267);gap:calc(var(--u)*.167);border-radius:calc(var(--u)*.233)}
+  .hero-pin.sold b{font-size:calc(var(--u)*.433)}
+  .hero-pin.sold small{font-size:calc(var(--u)*.3)}
+  .hero-pin.sold.unnumbered{min-width:calc(var(--u)*2.53);padding:calc(var(--u)*.233) calc(var(--u)*.333)}
+  .hero-pin.sold.unnumbered b{font-size:calc(var(--u)*.367)}
+  .hero-hint{font-size:clamp(9px,.76cqw,11px)}
+}
+
+/* Telefonda görsel çok küçüldüğü için etiket okunmuyor: satılan villalar da
+   diğerleri gibi nokta olarak gösterilir (kırmızı), ipucu balonu villaların
+   üstünü kapatmasın diye görselin üst kenarına alınır. */
+@media(max-width:760px){
+  .hero-pin.sold,.hero-pin.sold.unnumbered{min-width:0;width:14px;height:14px;min-height:0;padding:0;gap:0;border-radius:50%;background:#7d2525;border:1.5px solid rgba(255,255,255,.85)}
+  .hero-pin.sold b,.hero-pin.sold small,.hero-pin.sold.unnumbered b{display:none}
+  .hero-hint{top:8px;bottom:auto;width:max-content;max-width:calc(100% - 20px);font-size:8.5px;padding:6px 12px;letter-spacing:.03em}
+}
