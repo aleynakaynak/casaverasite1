@@ -1,5 +1,5 @@
-// Villa detail page — villa selector, image viewer, galleries, lightbox
-import { VILLA_COUNT, PLOT_AREAS } from './villa-data.js';
+import '../css/overrides.css';
+import { VILLA_COUNT, PLOT_AREAS, SOLD_VILLAS } from './villa-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -14,11 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
     ic:  { label: 'İç Dizayn', count: IC_COUNT }
   };
 
-  /* ---------- which villa? (from #vNN — hash survives every host & file://) ---------- */
   const chips = document.getElementById('villaChips');
   const villaTitle = document.getElementById('villaTitle');
   const specNo = document.getElementById('specNo');
   const specPlot = document.getElementById('specPlot');
+
+  const soldBanner = document.createElement('div');
+  soldBanner.className = 'villa-sold-banner';
+  soldBanner.textContent = 'SATILDI';
+  soldBanner.hidden = true;
+  villaTitle.insertAdjacentElement('afterend', soldBanner);
 
   function currentVilla(){
     const raw = parseInt(location.hash.replace(/^#v?/, ''), 10);
@@ -28,24 +33,27 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderVilla(){
     const no = currentVilla();
     const label = String(no).padStart(2, '0');
+    const sold = SOLD_VILLAS.has(no);
     villaTitle.textContent = `VİLLA ${label}`;
     specNo.textContent = label;
     specPlot.textContent = `${PLOT_AREAS[no]} m²`;
-    document.title = `Villa ${label} | Casa Vera Oasis`;
+    soldBanner.hidden = !sold;
+    document.title = sold ? `Villa ${label} · Satıldı | Casa Vera Oasis` : `Villa ${label} | Casa Vera Oasis`;
     chips.querySelectorAll('a').forEach(a => {
       a.classList.toggle('active', Number(a.dataset.no) === no);
     });
   }
 
   chips.innerHTML = Array.from({ length: VILLA_COUNT }, (_, i) => {
-    const n = String(i + 1).padStart(2, '0');
-    return `<a href="#v${n}" data-no="${i + 1}">${i + 1}</a>`;
+    const no = i + 1;
+    const n = String(no).padStart(2, '0');
+    const soldClass = SOLD_VILLAS.has(no) ? ' class="sold" title="Satıldı"' : '';
+    return `<a href="#v${n}" data-no="${no}"${soldClass}>${no}</a>`;
   }).join('');
 
   renderVilla();
   window.addEventListener('hashchange', renderVilla);
 
-  /* ---------- image viewer ---------- */
   const viewerImg = document.getElementById('viewerImg');
   const viewerCounter = document.getElementById('viewerCounter');
   const viewerThumbs = document.getElementById('viewerThumbs');
@@ -97,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('viewerPrev').addEventListener('click', () => showImage(currentIndex - 1));
   document.getElementById('viewerNext').addEventListener('click', () => showImage(currentIndex + 1));
 
-  /* ---------- full galleries ---------- */
   function buildGrid(container, set){
     const { count, label } = SETS[set];
     container.innerHTML = Array.from({ length: count }, (_, i) => {
@@ -131,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- lightbox ---------- */
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxCap = document.getElementById('lightboxCap');
