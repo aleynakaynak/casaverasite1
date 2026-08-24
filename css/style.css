@@ -5,3 +5,29 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
 
 .location-address{font-style:normal;font-size:15px;line-height:1.7;letter-spacing:.02em;color:#5d655d;margin-top:20px;padding-left:16px;border-left:2px solid rgba(93,101,93,.3)}
+
+
+/* Casa Vera logo tipografisi, responsive yerleşim ve satış durumları */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body,button,input,textarea{font-family:"Cormorant Garamond",Georgia,serif}
+body{font-size:17px}
+.hero,.hero-image,.hero-hotspots{width:100%;max-width:100%;min-width:0}
+.hero-image{overflow:hidden}
+.hero-image img{max-width:100%;min-width:0}
+.header,.section,.footer{max-width:100%}
+.hero-pin.sold{width:auto;min-width:48px;height:auto;min-height:30px;padding:5px 8px;border-radius:7px;background:#7d2525;border-color:#fff;display:flex;gap:5px;align-items:center;justify-content:center;cursor:not-allowed;z-index:5}
+.hero-pin.sold:hover{background:#7d2525;transform:translate(-50%,-50%);z-index:5}
+.hero-pin.sold small{position:static;transform:none;opacity:1;background:transparent;padding:0;box-shadow:none;font-family:"Cormorant Garamond",Georgia,serif;font-size:9px;font-weight:700;letter-spacing:.08em;color:#fff}
+.hero-pin.sold.unnumbered{min-width:76px;padding:7px 10px}
+.hero-pin.sold.unnumbered b{font-size:11px;letter-spacing:.1em}
+.villa-quick>a,.villa-quick>span{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(30,40,30,.2);border-radius:8px;font-size:13px;font-weight:600;color:var(--green)}
+.villa-quick>span.sold{width:58px;background:#7d2525;border-color:#7d2525;color:#fff;line-height:1;cursor:not-allowed}
+.villa-quick>span.sold b{font-size:13px}
+.villa-quick>span.sold small{font-size:7px;letter-spacing:.06em}
+@media(max-width:760px){
+  .hero-pin.sold{min-width:36px;min-height:22px;width:auto;height:auto;padding:3px 5px;transform:translate(-50%,-50%)}
+  .hero-pin.sold b{display:block;font-size:8px}
+  .hero-pin.sold small{display:none}
+  .hero-pin.sold.unnumbered{min-width:54px;padding:5px 7px}
+  .hero-pin.sold.unnumbered b{display:block;font-size:8px}
+}
