@@ -1,4 +1,4 @@
-import { VILLA_COUNT, PLOT_AREAS, HERO_POINTS, villaHref } from './villa-data.js';
+import { VILLA_COUNT, PLOT_AREAS, HERO_POINTS, SOLD_VILLAS, UNNUMBERED_SOLD_POINT, villaHref } from './villa-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('header');
@@ -46,14 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.classList.remove('open');
     document.body.style.overflow = '';
   };
-  document.getElementById('heroHotspots').innerHTML = Array.from({ length: VILLA_COUNT }, (_, i) => {
+  const heroPins = Array.from({ length: VILLA_COUNT }, (_, i) => {
     const no = i + 1;
     const [x, y] = HERO_POINTS[no];
+    if (SOLD_VILLAS.has(no)) {
+      return `<div class="hero-pin sold" style="left:${x}%;top:${y}%" role="img" aria-label="Villa ${no} satıldı"><b>${no}</b><small data-tr="SATILDI" data-en="SOLD">SATILDI</small></div>`;
+    }
     return `<a class="hero-pin" href="${villaHref(no)}" style="left:${x}%;top:${y}%" aria-label="Villa ${no} · ${PLOT_AREAS[no]} m² · detayları görüntüle"><b>${no}</b><span>${PLOT_AREAS[no]} m²</span></a>`;
   }).join('');
 
+  const [soldX, soldY] = UNNUMBERED_SOLD_POINT;
+  const unnumberedSold = `<div class="hero-pin sold unnumbered" style="left:${soldX}%;top:${soldY}%" role="img" aria-label="Numarasız villa satıldı"><b data-tr="SATILDI" data-en="SOLD">SATILDI</b></div>`;
+  document.getElementById('heroHotspots').innerHTML = heroPins + unnumberedSold;
+
   document.getElementById('villaQuick').innerHTML = Array.from({ length: VILLA_COUNT }, (_, i) => {
     const no = i + 1;
+    if (SOLD_VILLAS.has(no)) {
+      return `<span class="sold" aria-label="Villa ${no} satıldı"><b>${no}</b><small data-tr="SATILDI" data-en="SOLD">SATILDI</small></span>`;
+    }
     return `<a href="${villaHref(no)}" aria-label="Villa ${no} detayları">${no}</a>`;
   }).join('');
   document.querySelectorAll('#galleryGrid figure').forEach(figure => figure.addEventListener('click', () => openLightbox(figure.querySelector('img').src)));
