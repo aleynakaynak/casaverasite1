@@ -88,6 +88,44 @@ main,.hero,.hero-image,.section,.feature-image,.gallery-grid,.plot-grid,.locatio
   text-decoration:none;
 }
 
+.sold-legend{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:18px auto 28px;
+  color:var(--sold);
+  font-weight:700;
+  text-align:center;
+}
+.sold-legend .swatch{
+  width:13px;
+  height:13px;
+  flex:0 0 13px;
+  border-radius:50%;
+  background:var(--sold);
+  box-shadow:0 0 0 3px rgba(157,47,47,.12);
+}
+.plot-grid article.sold{
+  border-color:rgba(157,47,47,.45);
+  background:#fff4f2;
+}
+.plot-grid article.sold b,.plot-grid article.sold strong{color:var(--sold)}
+.sold-tag{
+  display:inline-flex;
+  align-items:center;
+  margin-left:7px;
+  padding:3px 7px;
+  border-radius:999px;
+  background:var(--sold);
+  color:#fff!important;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1;
+  vertical-align:middle;
+}
+
 .villa-sold-banner{
   display:inline-flex;
   align-items:center;
@@ -139,6 +177,7 @@ main,.hero,.hero-image,.section,.feature-image,.gallery-grid,.plot-grid,.locatio
   .hero-pin.sold.unnumbered b{font-size:9px}
   .villa-quick{max-width:100%}
   .villa-quick a,.villa-quick span.sold{width:39px;min-height:39px;height:39px}
+  .sold-legend{align-items:flex-start;font-size:14px;text-align:left}
   .plot-grid{grid-template-columns:1fr!important}
   .plot-grid .wide{grid-column:auto!important}
   .stats{grid-template-columns:1fr 1fr}
