@@ -1,3 +1,4 @@
+import '../css/overrides.css';
 import { VILLA_COUNT, PLOT_AREAS, HERO_POINTS, SOLD_VILLAS, UNNUMBERED_SOLD_POINT, villaHref } from './villa-data.js';
 
 document.addEventListener('DOMContentLoaded', () => {
