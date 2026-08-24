@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Villa Detayı | Casa Vera Oasis</title>
+<meta name="description" content="Casa Vera Oasis villa detayı — dış cephe ve iç dizayn görselleri, teknik bilgiler.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/villa.css">
+</head>
+<body class="villa-body">
+
+<header class="villa-topbar">
+  <a class="logo" href="index.html" aria-label="Casa Vera Oasis ana sayfa"><img src="assets/img/logo-casa-vera.png" alt="Casa Vera Oasis"></a>
+  <nav class="villa-topnav">
+    <a href="index.html#proje">Proje Hakkında</a>
+    <a href="index.html#guvenlik">Yapısal Güvenlik</a>
+    <a href="index.html#detaylar">Teknik Detaylar</a>
+    <a href="index.html#konum">Konum</a>
+  </nav>
+  <a class="villa-phone" href="tel:02166061384">0216 606 13 84</a>
+</header>
+
+<!-- ============ 3-COLUMN DETAIL (reference-site layout) ============ -->
+<main class="villa-detail">
+
+  <!-- LEFT: project card + villa selector -->
+  <aside class="vcard vcard-left">
+    <h2 class="vcard-title"><img class="vcard-logo" src="assets/img/logo-casa-vera.png" alt="Casa Vera Oasis"></h2>
+    <div class="vcard-body">
+      <img class="project-thumb" src="assets/img/villa-aksam.jpg" alt="Casa Vera Oasis villa">
+      <p class="thumb-cap">Assos · Kuzey Ege · 30 özel villa</p>
+      <p class="selector-label">Villa Seçimi</p>
+      <div class="villa-chips" id="villaChips"></div>
+    </div>
+  </aside>
+
+  <!-- CENTER: image viewer -->
+  <section class="vcard vcard-center">
+    <div class="vcard-head">
+      <a class="back-btn" href="index.html"><span>←</span> Geri</a>
+      <a class="quote-btn" href="index.html#iletisim">Teklif Al</a>
+    </div>
+    <div class="viewer">
+      <button class="viewer-nav prev" id="viewerPrev" aria-label="Önceki görsel">‹</button>
+      <img id="viewerImg" src="/assets/img/dis/dis-01.webp" alt="Villa görseli">
+      <button class="viewer-nav next" id="viewerNext" aria-label="Sonraki görsel">›</button>
+      <button class="viewer-full" id="viewerFull" aria-label="Tam ekran">⛶</button>
+      <div class="viewer-counter" id="viewerCounter"></div>
+    </div>
+    <div class="viewer-tabs" id="viewerTabs">
+      <button class="active" data-set="dis">Dış Cephe <small id="countDis"></small></button>
+      <button data-set="ic">İç Dizayn <small id="countIc"></small></button>
+    </div>
+    <div class="viewer-thumbs" id="viewerThumbs"></div>
+  </section>
+
+  <!-- RIGHT: specs table -->
+  <aside class="vcard vcard-right">
+    <h2 class="vcard-title" id="villaTitle">VİLLA 01</h2>
+    <div class="vcard-body">
+      <table class="spec-table">
+        <tbody>
+          <tr><th>VİLLA NO</th><td id="specNo">01</td></tr>
+          <tr><th>TİP</th><td>3+1</td></tr>
+          <tr><th>NET KULLANIM</th><td>135 m²</td></tr>
+          <tr><th>ZEMİN KAT</th><td>81,79 m²</td></tr>
+          <tr><th>1. KAT</th><td>81,21 m²</td></tr>
+          <tr><th>AÇIK TERAS</th><td>28 m²</td></tr>
+          <tr><th>NET ARSA</th><td id="specPlot">416 m²</td></tr>
+          <tr><th>BRÜT ARSA PAYI</th><td>640 m²</td></tr>
+          <tr><th>OTOPARK</th><td>2 araç</td></tr>
+        </tbody>
+      </table>
+      <p class="spec-note">Villa tipleri aynı mimari plan üzerine kuruludur; net arsa alanı konuma göre 405–421 m² arasında değişir. Ayrıca 425 m² sosyal tesis ve 15–16 no'lu villalar arasında 409 m² ortak havuz alanı bulunur.</p>
+      <a class="btn full" href="index.html#iletisim">Bilgi Talep Edin →</a>
+    </div>
+  </aside>
+</main>
+
+<!-- ============ FULL GALLERIES ============ -->
+<section class="villa-galleries">
+  <div class="gal-head">
+    <h2>Tüm villa <em>görselleri</em>.</h2>
+    <div class="villa-tabs" id="villaTabs">
+      <button class="active" data-tab="dis">Dış Cephe</button>
+      <button data-tab="ic">İç Dizayn</button>
+    </div>
+  </div>
+
+  <div class="villa-grid-wrap active" data-tab-panel="dis"><div class="villa-grid" id="gridDis"></div></div>
+  <div class="villa-grid-wrap" data-tab-panel="ic"><div class="villa-grid" id="gridIc"></div></div>
+
+  <div class="villa-cta">
+    <h2>Casa Vera'yı <em>yakından</em> keşfedin.</h2>
+    <p>Villalar, ödeme seçenekleri ve detaylı sunum için proje ekibine doğrudan ulaşın.</p>
+    <a class="btn" href="index.html#iletisim">Bilgi Talep Edin →</a>
+  </div>
+</section>
+
+<a class="whatsapp" href="https://wa.me/905322181184?text=Casa%20Vera%20Oasis%20projesi%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener" aria-label="WhatsApp ile iletişime geç">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.69 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.46-.72-1.69-.8-.22-.08-.39-.12-.55.13-.17.25-.64.8-.79.97-.14.16-.29.18-.53.06-.25-.12-1.04-.39-1.99-1.23-.73-.65-1.23-1.46-1.37-1.71-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.09-.16.04-.31-.02-.44-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42h-.48c-.16 0-.43.06-.66.31-.22.25-.86.84-.86 2.06s.89 2.39 1.01 2.56c.13.16 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.57.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29z"/></svg>
+  <b>WhatsApp</b>
+</a>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">✕</button>
+  <img src="" alt="" id="lightboxImg">
+  <div class="lightbox-cap" id="lightboxCap"></div>
+</div>
+
+<script type="module" src="js/villa.js"></script>
+</body>
+</html>

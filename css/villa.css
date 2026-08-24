@@ -1,0 +1,137 @@
+/* Villa detail page — 3-column card layout mirroring the reference site,
+   plus full Dış Cephe / İç Dizayn galleries below. */
+
+.villa-body{overflow:auto; background:var(--cream-2);}
+
+/* ---------- top bar ---------- */
+.villa-topbar{
+  position:sticky; top:0; z-index:30; background:var(--cream);
+  display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
+  padding:1rem 3vw; border-bottom:1px solid var(--line);
+}
+.villa-topbar .logo{color:var(--ink); border-color:var(--line); display:grid; place-items:center;}
+.villa-topbar .logo img{height:52px; width:auto; max-width:100%; object-fit:contain; display:block;}
+.vcard-title img.vcard-logo{height:64px; width:auto; max-width:100%; object-fit:contain; display:block; margin:0 auto;}
+.villa-topnav{display:flex; gap:1.8rem;}
+.villa-topnav a{font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); padding:.3rem 0; border-bottom:1px solid transparent;}
+.villa-topnav a:hover{color:var(--ink); border-color:var(--accent);}
+.villa-phone{font-size:.72rem; letter-spacing:.08em; border:1px solid var(--line); padding:.6rem 1rem; white-space:nowrap; color:var(--ink);}
+@media (max-width:900px){ .villa-topnav, .villa-phone{display:none;} }
+
+/* ---------- 3-column detail ---------- */
+.villa-detail{
+  display:grid; grid-template-columns:300px 1fr 320px; gap:1.4rem;
+  max-width:1560px; margin:0 auto; padding:1.6rem 3vw 2.5rem; align-items:start;
+}
+@media (max-width:1180px){ .villa-detail{grid-template-columns:1fr; max-width:820px;} }
+
+/* min-width:0 keeps the 1fr column from being blown out by the wide thumb strip */
+.vcard{background:var(--cream); border:1px solid var(--line); min-width:0;}
+.vcard-title{
+  font-family:var(--serif); font-size:1.5rem; letter-spacing:.02em; text-align:center;
+  padding:1.5rem 1rem; border-bottom:1px solid var(--line);
+}
+.vcard-body{padding:1.5rem;}
+
+/* left card */
+.project-thumb{width:100%; aspect-ratio:16/10; object-fit:cover;}
+.thumb-cap{font-size:.72rem; color:var(--muted); text-align:center; margin:.8rem 0 1.6rem; letter-spacing:.04em;}
+.selector-label{font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-deep); margin-bottom:.8rem; font-weight:600;}
+.villa-chips{display:flex; flex-wrap:wrap; gap:.35rem;}
+.villa-chips a{
+  width:34px; height:34px; display:flex; align-items:center; justify-content:center;
+  font-size:.74rem; border:1px solid var(--line); color:var(--muted); transition:.2s;
+}
+.villa-chips a:hover{border-color:var(--accent); color:var(--ink);}
+.villa-chips a.active{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;}
+
+/* center card */
+.vcard-head{display:flex; align-items:center; justify-content:space-between; padding:1.1rem 1.4rem; border-bottom:1px solid var(--line);}
+.back-btn{display:inline-flex; align-items:center; gap:.6rem; font-size:.76rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink);}
+.back-btn span{
+  width:36px; height:36px; border-radius:50%; background:var(--cream-2); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center; font-size:1rem; transition:.2s;
+}
+.back-btn:hover span{background:var(--ink); color:var(--cream); border-color:var(--ink);}
+.quote-btn{
+  background:var(--accent); color:#fff; padding:.7rem 1.4rem; font-size:.72rem;
+  letter-spacing:.1em; text-transform:uppercase; font-weight:600; border-radius:2rem;
+}
+.quote-btn:hover{background:var(--accent-deep);}
+
+.viewer{position:relative; background:var(--cream-2); aspect-ratio:16/10; overflow:hidden;}
+.viewer img{width:100%; height:100%; object-fit:cover;}
+.viewer-nav{
+  position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px;
+  background:rgba(246,243,236,.9); border:1px solid var(--line); font-size:1.5rem; line-height:1;
+  color:var(--ink); display:flex; align-items:center; justify-content:center; transition:.2s;
+}
+.viewer-nav:hover{background:var(--ink); color:var(--cream);}
+.viewer-nav.prev{left:1rem;}
+.viewer-nav.next{right:1rem;}
+.viewer-full{
+  position:absolute; right:1rem; bottom:1rem; width:42px; height:42px;
+  background:rgba(246,243,236,.9); border:1px solid var(--line); font-size:1rem; color:var(--ink);
+}
+.viewer-full:hover{background:var(--ink); color:var(--cream);}
+.viewer-counter{
+  position:absolute; left:1rem; bottom:1rem; background:rgba(20,23,26,.7); color:#f6f3ec;
+  font-size:.72rem; letter-spacing:.08em; padding:.45rem .8rem;
+}
+
+.viewer-tabs{display:flex; gap:.5rem; padding:1.1rem 1.4rem .4rem;}
+.viewer-tabs button{
+  font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; padding:.6rem 1.1rem;
+  border:1px solid var(--line); color:var(--muted);
+}
+.viewer-tabs button small{opacity:.6; margin-left:.25em;}
+.viewer-tabs button.active{background:var(--ink); border-color:var(--ink); color:var(--cream);}
+
+.viewer-thumbs{display:flex; gap:.5rem; overflow-x:auto; min-width:0; padding:.8rem 1.4rem 1.4rem; scrollbar-width:thin;}
+.viewer-thumbs img{
+  width:82px; height:56px; object-fit:cover; flex-shrink:0; cursor:pointer;
+  border:2px solid transparent; opacity:.6; transition:.2s;
+}
+.viewer-thumbs img:hover{opacity:1;}
+.viewer-thumbs img.active{border-color:var(--accent); opacity:1;}
+
+/* right card */
+.spec-table{width:100%; border-collapse:collapse;}
+.spec-table tr{border-bottom:1px solid var(--line);}
+.spec-table th{
+  text-align:left; font-size:.66rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--muted); font-weight:500; padding:.9rem .5rem .9rem 0;
+}
+.spec-table td{text-align:right; font-family:var(--serif); font-size:1.05rem; color:var(--ink); padding:.9rem 0;}
+.spec-note{font-size:.72rem; color:var(--muted); margin:1.2rem 0 1.6rem; line-height:1.6;}
+.btn.full{display:flex; justify-content:center; width:100%;}
+
+/* ---------- full galleries ---------- */
+.villa-galleries{max-width:1560px; margin:0 auto; padding:2rem 3vw 5rem;}
+.gal-head{display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1.2rem; margin-bottom:1.6rem;}
+.gal-head h2{font-size:clamp(1.5rem,2.6vw,2.2rem);}
+.gal-head h2 em{color:var(--accent-deep); font-style:italic;}
+
+.villa-tabs{display:flex; gap:.5rem;}
+.villa-tabs button{
+  font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; padding:.7rem 1.3rem;
+  border:1px solid var(--line); color:var(--muted); background:var(--cream);
+}
+.villa-tabs button.active{background:var(--ink); border-color:var(--ink); color:var(--cream);}
+
+.villa-grid-wrap{display:none;}
+.villa-grid-wrap.active{display:block; animation:fadein .4s var(--ease);}
+.villa-grid{display:grid; grid-template-columns:repeat(5, 1fr); gap:.8rem;}
+.villa-grid figure{position:relative; overflow:hidden; aspect-ratio:4/3; cursor:zoom-in; background:var(--cream);}
+.villa-grid figure img{width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .4s, transform .5s var(--ease);}
+.villa-grid figure img.loaded{opacity:1;}
+.villa-grid figure:hover img{transform:scale(1.06);}
+@media (max-width:1100px){ .villa-grid{grid-template-columns:repeat(4,1fr);} }
+@media (max-width:800px){ .villa-grid{grid-template-columns:repeat(3,1fr);} }
+@media (max-width:520px){ .villa-grid{grid-template-columns:repeat(2,1fr); gap:.5rem;} }
+
+.villa-cta{margin-top:4rem; padding-top:3rem; border-top:1px solid var(--line); text-align:center;}
+.villa-cta h2{font-size:clamp(1.5rem,2.8vw,2.2rem); margin-bottom:.7rem;}
+.villa-cta h2 em{color:var(--accent-deep); font-style:italic;}
+.villa-cta p{color:var(--muted); max-width:44ch; margin:0 auto 1.6rem;}
+.villa-cta .btn{display:inline-flex;}
