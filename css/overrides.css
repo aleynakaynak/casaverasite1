@@ -20,15 +20,34 @@ body{font-size:18px;letter-spacing:.01em}
 
 /* Keep every section inside the viewport. */
 main,.hero,.hero-image,.section,.feature-image,.gallery-grid,.plot-grid,.location,.contact{max-width:100%}
-.hero{width:100%;overflow:hidden}
-.hero-image{
+.hero{
   width:100%;
+  overflow:hidden;
+  background:#152019;
+}
+.hero-image{
+  position:relative;
+  width:100vw;
   max-width:100vw;
-  margin-inline:auto;
+  aspect-ratio:2048/1707;
+  margin:0;
   overflow:hidden;
 }
-.hero-image img{display:block;max-width:100%;object-position:center center}
-.hero-hotspots{overflow:hidden}
+.hero-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:contain;
+  object-position:center center;
+}
+.hero-hotspots{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
 
 /* Sold villas are intentionally non-interactive and unmistakable. */
 .hero-pin.sold{
@@ -146,12 +165,13 @@ main,.hero,.hero-image,.section,.feature-image,.gallery-grid,.plot-grid,.locatio
   text-decoration:line-through;
 }
 
-/* Desktop: constrain the master plan by viewport height so it never spills sideways or below the screen. */
+/* Full-width master plan on every viewport. The image and hotspot layer keep the same aspect ratio. */
 @media (min-width:1101px){
   .hero-image{
-    width:min(100vw,calc((100svh - 82px) * 1.2));
+    width:100vw;
+    max-width:100vw;
     aspect-ratio:2048/1707;
-    max-height:calc(100svh - 82px);
+    max-height:none;
   }
   .hero-image img{width:100%;height:100%;object-fit:contain}
 }
@@ -159,7 +179,7 @@ main,.hero,.hero-image,.section,.feature-image,.gallery-grid,.plot-grid,.locatio
 /* Tablet and mobile: keep the full site fluid and preserve hotspot alignment. */
 @media (max-width:1100px){
   .section{padding-left:clamp(18px,5vw,48px);padding-right:clamp(18px,5vw,48px)}
-  .hero-image{width:100%;aspect-ratio:2048/1707;height:auto}
+  .hero-image{width:100vw;max-width:100vw;aspect-ratio:2048/1707;height:auto}
   .hero-image img{width:100%;height:100%;object-fit:contain}
   .plot-grid{width:100%}
 }
