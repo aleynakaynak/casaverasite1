@@ -1,0 +1,149 @@
+/* Casa Vera Oasis — responsive production overrides */
+:root{
+  --sold:#9d2f2f;
+  --sold-dark:#711f1f;
+}
+
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body,button,input,textarea,select{
+  font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+}
+body{font-size:18px;letter-spacing:.01em}
+.desktop-nav a,.header-phone,.lang,.button,.kicker,.stats span,.plan-hint,.hero-hint,.whatsapp b,.contact-form label span{
+  font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  font-weight:600;
+}
+.desktop-nav a{font-size:15px;letter-spacing:.08em}
+.header-phone{font-size:15px}
+.button{font-size:14px;letter-spacing:.07em}
+.section-heading>p:not(.kicker),.about-copy>p:not(.kicker),.contact-copy>p:not(.kicker),.location-card>p:not(.kicker){font-size:clamp(17px,1.45vw,21px)}
+
+/* Keep every section inside the viewport. */
+main,.hero,.hero-image,.section,.feature-image,.gallery-grid,.plot-grid,.location,.contact{max-width:100%}
+.hero{width:100%;overflow:hidden}
+.hero-image{
+  width:100%;
+  max-width:100vw;
+  margin-inline:auto;
+  overflow:hidden;
+}
+.hero-image img{display:block;max-width:100%;object-position:center center}
+.hero-hotspots{overflow:hidden}
+
+/* Sold villas are intentionally non-interactive and unmistakable. */
+.hero-pin.sold{
+  min-width:38px;
+  height:38px;
+  background:var(--sold);
+  border:2px solid #fff;
+  color:#fff;
+  cursor:default;
+  box-shadow:0 6px 18px rgba(90,15,15,.45);
+  z-index:8;
+}
+.hero-pin.sold:hover,.hero-pin.sold:focus-visible{
+  background:var(--sold-dark);
+  transform:translate(-50%,-50%);
+}
+.hero-pin.sold b{font-size:14px;line-height:1}
+.hero-pin.sold small{
+  position:absolute;
+  left:50%;
+  top:calc(100% + 6px);
+  transform:translateX(-50%);
+  display:block;
+  padding:4px 8px;
+  border-radius:999px;
+  background:var(--sold);
+  color:#fff;
+  font-family:"Cormorant Garamond",Georgia,serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1;
+  white-space:nowrap;
+  box-shadow:0 4px 12px rgba(0,0,0,.28);
+}
+.hero-pin.sold.unnumbered{min-width:76px;padding:0 10px}
+.hero-pin.sold.unnumbered b{font-size:12px;letter-spacing:.08em}
+
+.villa-quick span.sold,.villa-quick a.sold{
+  width:52px;
+  min-height:48px;
+  display:grid;
+  place-items:center;
+  align-content:center;
+  gap:1px;
+  border:1px solid var(--sold);
+  border-radius:8px;
+  background:#fff4f2;
+  color:var(--sold);
+  text-decoration:line-through;
+  cursor:default;
+}
+.villa-quick span.sold small,.villa-quick a.sold small{
+  font-size:8px;
+  line-height:1;
+  letter-spacing:.06em;
+  text-decoration:none;
+}
+
+.villa-sold-banner{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:14px 0 0;
+  padding:8px 16px;
+  border-radius:999px;
+  background:var(--sold);
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.1em;
+}
+.villa-chips a.sold,.villa-selector a.sold,#villaChips a.sold{
+  border-color:var(--sold)!important;
+  background:#fff4f2!important;
+  color:var(--sold)!important;
+  text-decoration:line-through;
+}
+
+/* Desktop: constrain the master plan by viewport height so it never spills sideways or below the screen. */
+@media (min-width:1101px){
+  .hero-image{
+    width:min(100vw,calc((100svh - 82px) * 1.2));
+    aspect-ratio:2048/1707;
+    max-height:calc(100svh - 82px);
+  }
+  .hero-image img{width:100%;height:100%;object-fit:contain}
+}
+
+/* Tablet and mobile: keep the full site fluid and preserve hotspot alignment. */
+@media (max-width:1100px){
+  .section{padding-left:clamp(18px,5vw,48px);padding-right:clamp(18px,5vw,48px)}
+  .hero-image{width:100%;aspect-ratio:2048/1707;height:auto}
+  .hero-image img{width:100%;height:100%;object-fit:contain}
+  .plot-grid{width:100%}
+}
+
+@media (max-width:720px){
+  body{font-size:17px}
+  .header{padding-left:14px;padding-right:14px}
+  .brand{width:78px}
+  .hero{padding-top:82px}
+  .hero-hint{bottom:8px;font-size:9px;padding:7px 10px}
+  .hero-pin{min-width:24px;height:24px;font-size:10px}
+  .hero-pin.sold{min-width:29px;height:29px}
+  .hero-pin.sold small{font-size:8px;padding:3px 5px;top:calc(100% + 3px)}
+  .hero-pin.sold.unnumbered{min-width:58px}
+  .hero-pin.sold.unnumbered b{font-size:9px}
+  .villa-quick{max-width:100%}
+  .villa-quick a,.villa-quick span.sold{width:39px;min-height:39px;height:39px}
+  .plot-grid{grid-template-columns:1fr!important}
+  .plot-grid .wide{grid-column:auto!important}
+  .stats{grid-template-columns:1fr 1fr}
+  .stats article:nth-child(2){border-right:0}
+  .about,.location,.contact{grid-template-columns:1fr!important}
+  .gallery-grid{grid-template-columns:1fr!important}
+  .gallery-grid figure{grid-column:1!important;min-height:220px}
+}
