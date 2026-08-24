@@ -32,11 +32,14 @@ body{font-size:17px}
   .hero-pin.sold.unnumbered b{display:block;font-size:8px}
 }
 
-/* Hero görseli her ekranda kaydırmadan tek ekrana sığsın.
-   Genişlik hem kutuya hem de başlığın altında kalan ekran yüksekliğine göre
-   sınırlanır; oran (1672/941) korunduğu için villa numaraları hizalı kalır. */
+/* Hero görseli her zaman tam genişlikte durur; yanlarda boşluk kalmaz.
+   Ekrana sığmadığı durumda üst/alt kenardan (deniz ve yol tarafından) kırpılır.
+   Numara katmanı da görselle aynı oranda ölçeklendiği için işaretler hizalı kalır;
+   kırpma 35vw tabanıyla sınırlı olduğundan 30 villanın tamamı görünür kalıyor. */
 .hero{--hdr:82px}
-.hero-image{width:min(100%,calc((100vh - var(--hdr)) * 1672 / 941));width:min(100%,calc((100svh - var(--hdr)) * 1672 / 941));margin-inline:auto}
+.hero-image{width:100%;aspect-ratio:1672/941;max-height:max(calc(100vh - var(--hdr)),35vw);max-height:max(calc(100svh - var(--hdr)),35vw);overflow:hidden;margin-inline:0}
+.hero-image img{object-fit:cover}
+.hero-hotspots{inset:auto;top:50%;left:50%;width:100%;aspect-ratio:1672/941;transform:translate(-50%,-50%)}
 @media(max-width:760px){
   .hero{--hdr:68px}
 }
