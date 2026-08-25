@@ -7,10 +7,10 @@
   height:30px;
   padding:0 4px;
   border-radius:999px;
-  background:rgba(14,22,15,.72);
-  border:1.5px solid rgba(255,255,255,.75);
+  background:#9d2f2f;
+  border:1.5px solid rgba(255,255,255,.9);
   color:#fff;
-  box-shadow:0 3px 10px rgba(0,0,0,.35);
+  box-shadow:0 3px 10px rgba(90,15,15,.35);
   transform:translate(-50%,-50%);
 }
 .hero-pin.sold b{font-size:13px;line-height:1}
@@ -21,6 +21,7 @@
   width:30px;
   height:30px;
   padding:0;
+  background:#9d2f2f;
 }
 .hero-pin.sold.unnumbered b,
 .hero-pin.sold.no-number b{display:none}
@@ -37,6 +38,12 @@
     border-width:1px!important;
     font-size:6.5px!important;
     box-shadow:0 1px 4px rgba(0,0,0,.3)!important;
+  }
+  .hero-pin.sold,
+  .hero-pin.sold.unnumbered,
+  .hero-pin.sold.no-number{
+    background:#9d2f2f!important;
+    border-color:rgba(255,255,255,.92)!important;
   }
   .hero-pin b,
   .hero-pin.sold b{
