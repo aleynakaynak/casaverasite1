@@ -1,0 +1,55 @@
+/* Final hero pin corrections */
+.hero-pin.sold,
+.hero-pin.sold:hover,
+.hero-pin.sold:focus-visible{
+  min-width:30px;
+  width:30px;
+  height:30px;
+  padding:0 4px;
+  border-radius:999px;
+  background:rgba(14,22,15,.72);
+  border:1.5px solid rgba(255,255,255,.75);
+  color:#fff;
+  box-shadow:0 3px 10px rgba(0,0,0,.35);
+  transform:translate(-50%,-50%);
+}
+.hero-pin.sold b{font-size:13px;line-height:1}
+.hero-pin.sold small{display:none!important}
+.hero-pin.sold.unnumbered,
+.hero-pin.sold.no-number{
+  min-width:30px;
+  width:30px;
+  height:30px;
+  padding:0;
+}
+.hero-pin.sold.unnumbered b,
+.hero-pin.sold.no-number b{display:none}
+
+@media (max-width:520px){
+  .hero-pin,
+  .hero-pin.sold,
+  .hero-pin.sold.unnumbered,
+  .hero-pin.sold.no-number{
+    min-width:15px!important;
+    width:15px!important;
+    height:15px!important;
+    padding:0!important;
+    border-width:1px!important;
+    font-size:6.5px!important;
+    box-shadow:0 1px 4px rgba(0,0,0,.3)!important;
+  }
+  .hero-pin b,
+  .hero-pin.sold b{
+    font-size:6.5px!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+  }
+  .hero-pin:hover,
+  .hero-pin:focus-visible,
+  .hero-pin.sold:hover,
+  .hero-pin.sold:focus-visible{
+    transform:translate(-50%,-50%)!important;
+  }
+  .hero-pin span,
+  .hero-pin.sold small{display:none!important}
+}
